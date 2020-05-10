@@ -19,7 +19,7 @@ class M_Buku extends CI_Model {
 			"Tahun_Terbit" => $this -> input -> post('Tahun_Terbit',true),
 			"ID_Rak" => $this -> input -> post('ID_Rak',true),
 		];
-		$this -> db -> input('buku', $data);
+		$this -> db -> insert('buku', $data);
 	}
 
 	public function HapusBuku($id)
