@@ -4,7 +4,7 @@ class M_Peminjaman extends CI_Model
 	public function getAllDataPeminjaman(){
 		//JOIN table peminjaman, anggota, buku, pegawai, buku dan Rak Buku
 		$this -> db -> table ('peminjaman');
-		$this -> db -> select ('Tgl_Pinjam', 'Tgl_Hrs_Kembali', 'anggota.Nama','pegawai.Nama', 'buku.Nama');
+		$this -> db -> select ('Tgl_Pinjam', 'Tgl_Hrs_Kembali', 'anggota.Nama','pegawai.Nama', 'buku.Nama', 'rak_buku.Nama_Rak');
 		$this -> db -> join('anggota', 'anggota.ID_Anggota = peinjaman.ID_Anggota');
 		$this -> db -> join('buku', 'buku.ID_Buku = peminjaman.ID_Buku');
 		$this -> db -> join('rak_buku', 'rak_buku.ID_Rak = buku.ID_Rak');
@@ -24,7 +24,7 @@ class M_Peminjaman extends CI_Model
 			"ID_Pegawai" => $this->input->post('ID_Pegawai', true),
 			"ID_Buku" => $this->input->post('ID_Buku', true)
 		];
-		$this->db->input('peminjaman', $data);
+		$this->db->insert('peminjaman', $data);
 	}
 
 	//Untuk Detail Buku (hanya satu baris yang tampil)
@@ -33,7 +33,7 @@ class M_Peminjaman extends CI_Model
 		$this -> db -> where ('ID_Pinjam', $id);
 		//JOIN table peminjaman, anggota, buku, pegawai, buku dan Rak Buku
 		$this -> db -> table ('peminjaman');
-		$this -> db -> select ('Tgl_Pinjam', 'Tgl_Hrs_Kembali', 'anggota.Nama','pegawai.Nama', 'buku.Nama');
+		$this -> db -> select ('Tgl_Pinjam', 'Tgl_Hrs_Kembali', 'anggota.Nama','pegawai.Nama', 'buku.Nama', 'rak_buku.Nama_Rak');
 		$this -> db -> join('anggota', 'anggota.ID_Anggota = peinjaman.ID_Anggota');
 		$this -> db -> join('buku', 'buku.ID_Buku = peminjaman.ID_Buku');
 		$this -> db -> join('rak_buku', 'rak_buku.ID_Rak = buku.ID_Rak');
