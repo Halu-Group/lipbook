@@ -21,7 +21,7 @@ class M_Pengembalian extends CI_Model
 			"ID_Pinjam" => $this->input->post('ID_Pinjam', true),
 			"ID_Pegawai" => $this->input->post('ID_Pegawai', true)
 		];
-		$this->db->input('pengembalian', $data);
+		$this->db->insert('pengembalian', $data);
 	}
 
 	//Untuk Detail Buku (hanya satu baris yang tampil)
