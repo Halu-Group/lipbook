@@ -10,7 +10,7 @@ class M_Login extends CI_Model {
 	}
 	public function getLoginPegawai($usr)
 	{
-		$user = $this->db->get_where('anggota', ['nip' => $usr])->row_array();
+		$user = $this->db->get_where('pegawai', ['nip' => $usr])->row_array();
 		return $user;
 	}
 

@@ -15,9 +15,9 @@
 									<h1 class="h4 text-gray-900 mb-4">Lib-Book Login</h1>
 									<img src="assets/img/logo1.png" alt="logo1">
 								</div>
-								<form class="user">
+								<form class="user" method="post" action="<?= base_url()?>">
 									<div class="form-group">
-										<input type="text" class="form-control form-control-user" id="email" name="email" placeholder="Enter Email Address...">
+										<input type="text" class="form-control form-control-user" id="email" name="username" placeholder="Enter Username...">
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
