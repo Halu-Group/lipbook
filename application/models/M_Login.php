@@ -1,21 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Perpus_model extends CI_Model {
+class M_Login extends CI_Model {
 
 	//query login
-	public function getLoginData($usr,$psw)
+	public function getLoginUser($usr)
 	{
-		$u = $usr;
-		$p = md5($psw);
-		$cek_login = $this->db->get_where('pegawai', ['NIP' => $u, 'Password' => $p]);
-		if(count($cek_login->result())>0)
-		{
-			header('location:'.base_url().'home');
-		}
-		else
-		{
-			header('location:'.base_url().'home/loggin');
-		}
+		$user = $this->db->get_where('anggota', ['nim' => $usr])->row_array();
+		return $user;
+	}
+	public function getLoginPegawai($usr)
+	{
+		$user = $this->db->get_where('anggota', ['nip' => $usr])->row_array();
+		return $user;
 	}
 
 }
