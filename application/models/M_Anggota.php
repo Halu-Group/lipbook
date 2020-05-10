@@ -23,7 +23,7 @@ class M_Anggota extends CI_Model {
 			"Angkatan" => $this -> input -> post('Angkatan',true),
 			"Alamat" => $this -> input -> post('Alamat',true)
 		];
-		$this -> db -> input('anggota', $data);
+		$this -> db -> insert('anggota', $data);
 	}
 	public function HapusAnggota($id)
 	{
