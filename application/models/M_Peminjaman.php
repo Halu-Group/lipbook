@@ -13,18 +13,16 @@ class M_Peminjaman extends CI_Model
 		$query = $this -> db -> get();
 		return $query -> result_array();
 	}
-	public function TambahPeminjaman()
+	public function TambahPeminjaman($data)
 	{
 		//ini sama dengan ID_Anggota => $_POST('ID_Anggota')
 		//parameter true untuk keamanan
-		$data = [
-			"Tgl_Pinjam" => $this->input->post('Tgl_Pinjam', true),
-			"Tgl_Hrs_Kembali" => $this->input->post('Tgl_Hrs_Kembali', true),
-			"ID_Anggota" => $this->input->post('ID_Anggota', true),
-			"ID_Pegawai" => $this->input->post('ID_Pegawai', true),
-			"ID_Buku" => $this->input->post('ID_Buku', true)
-		];
-		$this->db->insert('peminjaman', $data);
+		return $this->db->insert('peminjaman', $data);
+	}
+
+	public function getDataPeminjamanByBuku($book){
+		$data = $this->db->get_where('peminjaman', ['Kode_Buku' => $book])->row_array();
+		return $data;
 	}
 
 	//Untuk Detail Buku (hanya satu baris yang tampil)
